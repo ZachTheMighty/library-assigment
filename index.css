@@ -30,6 +30,7 @@ main {
   background-color: #b6ff24;
   padding: 12px;
   border-radius: 10px;
+  gap: 12px;
 }
 
 .book {

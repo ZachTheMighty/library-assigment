@@ -63,10 +63,10 @@ function addButtons() {
 
     removeBook.addEventListener("click", () => {
       for (let i = 0; i < myLibrary.length; i++)
-        if (myLibrary[i].id === bookContainer.getAttribute("data-id"))
-          delete myLibrary[i];
-
-      bookContainer.remove();
+        if (myLibrary[i].id === bookContainer.getAttribute("data-id")) {
+          myLibrary.splice(i, 1);
+          bookContainer.remove();
+        }
     });
 
     let toggleRead = document.createElement("button");
@@ -75,14 +75,13 @@ function addButtons() {
 
     toggleRead.addEventListener("click", () => {
       for (let i = 0; i < myLibrary.length; i++)
-      {
-        if (myLibrary[i].id === bookContainer.getAttribute("data-id"))
+        if (myLibrary[i].id === bookContainer.getAttribute("data-id")) {
           myLibrary[i].haveRead = !myLibrary[i].haveRead;
 
-        for(const child of bookContainer.children)
-          if(child.classList.contains("read"))
-            child.textContent = `${myLibrary[i].haveRead ? "Read" : "Haven't read yet"}`;
-      }
+          for (const child of bookContainer.children)
+            if (child.classList.contains("read"))
+              child.textContent = `${myLibrary[i].haveRead ? "Read" : "Haven't read yet"}`;
+        }
     });
 
     buttonContainer.append(toggleRead);
@@ -92,7 +91,11 @@ function addButtons() {
   });
 }
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
+addBookToLibrary("The Hobbit 1", "J.R.R. Tolkien", 295, false);
+addBookToLibrary("The Hobbit 2", "J.R.R. Tolkien", 295, false);
+addBookToLibrary("The Hobbit 3", "J.R.R. Tolkien", 295, false);
+addBookToLibrary("The Hobbit 4", "J.R.R. Tolkien", 295, false);
+addBookToLibrary("The Hobbit 5", "J.R.R. Tolkien", 295, false);
 
 displayBook();
 addButtons();
