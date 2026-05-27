@@ -25,12 +25,16 @@ body {
 
 main {
   width: 900px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-flow: row wrap;
   background-color: #b6ff24;
   padding: 12px;
   border-radius: 10px;
   gap: 12px;
+}
+
+main > * {
+  flex: 1 1 40%;
 }
 
 .book {
