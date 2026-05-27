@@ -30,15 +30,15 @@ function displayBook() {
 
     let bookAuthor = document.createElement("div");
     bookAuthor.classList.add("author");
-    bookAuthor.textContent = `${book.author}`;
+    bookAuthor.textContent = `By ${book.author}`;
 
     let bookNumOfPages = document.createElement("div");
     bookNumOfPages.classList.add("num-of-pages");
-    bookNumOfPages.textContent = `${book.numOfPages}`;
+    bookNumOfPages.textContent = `${book.numOfPages} Pages`;
 
     let bookRead = document.createElement("div");
     bookRead.classList.add("read");
-    bookRead.textContent = `${book.haveRead}`;
+    bookRead.textContent = `${book.haveRead ? "Read" : "Haven't read yet"}`;
 
     bookContainer.append(bookTitle);
     bookContainer.append(bookAuthor);
@@ -49,6 +49,29 @@ function displayBook() {
   });
 }
 
+function addButtons() {
+  let bookContainers = document.querySelectorAll(".book");
+
+  bookContainers.forEach((bookContainer) => {
+    let buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("buttons");
+
+    let removeBook = document.createElement("button");
+    removeBook.classList.add("remove-book");
+    removeBook.textContent = "Remove Book";
+
+    let toggleRead = document.createElement("button");
+    toggleRead.classList.add("toggle-read");
+    toggleRead.textContent = "Toggle Read";
+
+    buttonContainer.append(toggleRead);
+    buttonContainer.append(removeBook);
+
+    bookContainer.append(buttonContainer);
+  });
+}
+
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
 
 displayBook();
+addButtons();

@@ -17,4 +17,56 @@ body {
     sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+main {
+  width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #b6ff24;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.book {
+  background-color: #6d24ff;
+  padding: 12px;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.book * + * {
+  margin-top: 12px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.title,
+.author {
+  font-style: italic;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.remove-book,
+.toggle-read {
+  margin: 0;
+  background-color: #ffdb24;
+  padding: 10px;
+  border: 0;
+  border-radius: 10px;
 }
