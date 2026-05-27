@@ -5,7 +5,7 @@ function Book(title, author, numOfPages, haveRead) {
   this.author = author;
   this.numOfPages = numOfPages;
   this.haveRead = haveRead;
-  const id = crypto.randomUUID();
+  this.id = crypto.randomUUID();
 }
 
 Book.prototype.info = function () {
@@ -13,6 +13,42 @@ Book.prototype.info = function () {
 };
 
 function addBookToLibrary(title, author, numOfPages, haveRead) {
-  let book = Book(title, author, numOfPages, haveRead);
+  let book = new Book(title, author, numOfPages, haveRead);
   myLibrary.push(book);
 }
+
+function displayBook() {
+  const library = document.querySelector("main");
+
+  myLibrary.forEach((book) => {
+    let bookContainer = document.createElement("div");
+    bookContainer.classList.add("book");
+
+    let bookTitle = document.createElement("div");
+    bookTitle.classList.add("title");
+    bookTitle.textContent = `${book.title}`;
+
+    let bookAuthor = document.createElement("div");
+    bookAuthor.classList.add("author");
+    bookAuthor.textContent = `${book.author}`;
+
+    let bookNumOfPages = document.createElement("div");
+    bookNumOfPages.classList.add("num-of-pages");
+    bookNumOfPages.textContent = `${book.numOfPages}`;
+
+    let bookRead = document.createElement("div");
+    bookRead.classList.add("read");
+    bookRead.textContent = `${book.haveRead}`;
+
+    bookContainer.append(bookTitle);
+    bookContainer.append(bookAuthor);
+    bookContainer.append(bookNumOfPages);
+    bookContainer.append(bookRead);
+
+    library.append(bookContainer);
+  });
+}
+
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
+
+displayBook();
