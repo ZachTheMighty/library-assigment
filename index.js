@@ -23,6 +23,7 @@ function displayBook() {
   myLibrary.forEach((book) => {
     let bookContainer = document.createElement("div");
     bookContainer.classList.add("book");
+    bookContainer.setAttribute("data-id", `${book.id}`);
 
     let bookTitle = document.createElement("div");
     bookTitle.classList.add("title");
@@ -60,9 +61,29 @@ function addButtons() {
     removeBook.classList.add("remove-book");
     removeBook.textContent = "Remove Book";
 
+    removeBook.addEventListener("click", () => {
+      for (let i = 0; i < myLibrary.length; i++)
+        if (myLibrary[i].id === bookContainer.getAttribute("data-id"))
+          delete myLibrary[i];
+
+      bookContainer.remove();
+    });
+
     let toggleRead = document.createElement("button");
     toggleRead.classList.add("toggle-read");
     toggleRead.textContent = "Toggle Read";
+
+    toggleRead.addEventListener("click", () => {
+      for (let i = 0; i < myLibrary.length; i++)
+      {
+        if (myLibrary[i].id === bookContainer.getAttribute("data-id"))
+          myLibrary[i].haveRead = !myLibrary[i].haveRead;
+
+        for(const child of bookContainer.children)
+          if(child.classList.contains("read"))
+            child.textContent = `${myLibrary[i].haveRead ? "Read" : "Haven't read yet"}`;
+      }
+    });
 
     buttonContainer.append(toggleRead);
     buttonContainer.append(removeBook);
