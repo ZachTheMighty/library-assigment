@@ -1,5 +1,6 @@
 const myLibrary = [];
 const form = document.querySelector("form");
+const library = document.querySelector("main");
 
 function Book(title, author, numOfPages, haveRead) {
   this.title = title;
@@ -20,8 +21,6 @@ function addBookToLibrary(title, author, numOfPages, haveRead) {
 }
 
 function displayBook() {
-  const library = document.querySelector("main");
-
   myLibrary.forEach((book) => {
     if (!book.isDisplayed) {
       let bookContainer = document.createElement("div");
@@ -107,9 +106,11 @@ form.addEventListener("submit", (e) => {
   let title = form.title.value;
   let author = form.author.value;
   let numOfPages = form.numOfPages.value;
-  let haveRead = form.haveRead.value;
+  let haveRead = form.haveRead.value === "true"; // convert string "true" to bool true
 
   addBookToLibrary(title, author, numOfPages, haveRead);
   displayBook();
   addButtons();
+
+  form.reset();
 });

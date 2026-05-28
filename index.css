@@ -53,6 +53,12 @@ input {
   border: 2px solid #6d24ff;
   border-radius: 10px;
   padding: 8px;
+  font-size: 1em;
+}
+
+input:focus {
+  border: 2px solid #b6ff24;
+  outline: 0;
 }
 
 form > div {
@@ -66,7 +72,7 @@ form > button {
 }
 
 main {
-  width: 900px;
+  width: min(900px, 100%);
   display: flex;
   flex-flow: row wrap;
   background-color: #b6ff24;
@@ -78,6 +84,19 @@ main {
 main > * {
   flex: 1 1 40%;
 }
+
+main:empty
+{
+  background-color: white;
+  justify-content: center;
+}
+
+main:empty::after {
+  font-size: 1.5rem;
+  font-weight: 500;
+  content: "Your library is empty. click on the button above to add some books.";
+}
+
 
 .book {
   background-color: #6d24ff;
