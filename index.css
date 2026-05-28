@@ -21,6 +21,48 @@ body {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  gap: 24px;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+dialog {
+  padding: 24px;
+  width: 500px;
+  border: 0;
+  border-radius: 10px;
+}
+
+dialog > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+dialog > div > button {
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+input {
+  border: 2px solid #6d24ff;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+form > div {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+form > div,
+form > button {
+  margin-top: 12px;
 }
 
 main {
@@ -46,7 +88,7 @@ main > * {
   border-radius: 10px;
 }
 
-.book * + * {
+.book > * + * {
   margin-top: 12px;
 }
 
@@ -67,11 +109,25 @@ main > * {
   align-items: center;
 }
 
-.remove-book,
-.toggle-read {
+button {
   margin: 0;
   background-color: #ffdb24;
-  padding: 10px;
+  padding: 10px 2em;
   border: 0;
   border-radius: 10px;
+  font-size: 1rem;
+}
+
+h1 + button {
+  font-size: 2rem;
+}
+
+button:active,
+button:active {
+  opacity: 0.5;
+}
+
+button:hover,
+button:hover {
+  cursor: pointer;
 }
