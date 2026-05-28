@@ -25,6 +25,7 @@
             maxlength="20"
             autocomplete="off"
             required
+            autofocus
           />
         </div>
         <div>
@@ -57,10 +58,18 @@
               type="radio"
               name="haveRead"
               id="yes"
+              value="true"
               autocomplete="off"
               required
             /><label for="yes">Yes</label>
-            <input type="radio" name="haveRead" id="no" autocomplete="off" />
+            <input
+              type="radio"
+              name="haveRead"
+              id="no"
+              value="false"
+              autocomplete="off"
+              required
+            />
             <label for="no">no</label>
           </div>
         </div>
