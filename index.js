@@ -11,8 +11,8 @@ function Book(title, author, numOfPages, haveRead) {
   this.isDisplayed = false;
 }
 
-Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.numOfPages} pages, ${this.haveRead ? "read" : "not read yet"}`;
+Book.prototype.toggleRead = function () {
+  this.haveRead = !this.haveRead;
 };
 
 function addBookToLibrary(title, author, numOfPages, haveRead) {
@@ -82,7 +82,7 @@ function addButtons() {
       toggleRead.addEventListener("click", () => {
         for (let i = 0; i < myLibrary.length; i++)
           if (myLibrary[i].id === bookContainer.getAttribute("data-id")) {
-            myLibrary[i].haveRead = !myLibrary[i].haveRead;
+            myLibrary[i].toggleRead;
 
             for (const child of bookContainer.children)
               if (child.classList.contains("read"))
