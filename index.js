@@ -2,18 +2,23 @@ const myLibrary = [];
 const form = document.querySelector("form");
 const library = document.querySelector("main");
 
-function Book(title, author, numOfPages, haveRead) {
+class Book {
+  constructor(title, author, numOfPages, haveRead)
+  {
   this.title = title;
   this.author = author;
   this.numOfPages = numOfPages;
   this.haveRead = haveRead;
   this.id = crypto.randomUUID();
   this.isDisplayed = false;
-}
+  }
 
-Book.prototype.toggleRead = function () {
+  toggleRead()
+  {
+
   this.haveRead = !this.haveRead;
-};
+  }
+}
 
 function addBookToLibrary(title, author, numOfPages, haveRead) {
   let book = new Book(title, author, numOfPages, haveRead);
@@ -82,7 +87,7 @@ function addButtons() {
       toggleRead.addEventListener("click", () => {
         for (let i = 0; i < myLibrary.length; i++)
           if (myLibrary[i].id === bookContainer.getAttribute("data-id")) {
-            myLibrary[i].toggleRead;
+            myLibrary[i].toggleRead();
 
             for (const child of bookContainer.children)
               if (child.classList.contains("read"))
